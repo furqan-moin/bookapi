@@ -8,3 +8,4 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     void delete(BookResponseDto existingBook);
 }
+hi
