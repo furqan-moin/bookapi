@@ -1,0 +1,197 @@
+Goal: Build a production-style CRUD REST API for managing books.
+
+Features:
+
+Get all books
+Get book by ID
+Add new book
+Update book
+Delete book
+Proper validation
+Exception handling
+Correct HTTP status codes
+
+STEP 1: Install Required Software
+
+1. Java 21 Run:
+
+java -version
+
+Expected:
+
+java version "21"
+
+If not installed:
+
+Download JDK 21 from Oracle or OpenJDK
+Set JAVA_HOME
+
+2. IntelliJ IDEA
+
+Install Community or Ultimate edition
+Install Maven support
+
+3. Maven Check
+
+mvn -version
+
+STEP 2: Create Spring Boot Project
+
+Go to: https://start.spring.io/
+
+Project Settings:
+
+Project: Maven
+Language: Java
+Spring Boot: 3.x
+Group: com.furqan
+Artifact: bookapi
+Name: bookapi
+Package: com.furqan.bookapi
+Packaging: Jar
+Java: 21
+
+Dependencies:
+
+Spring Web
+Spring Data JPA
+H2 Database
+Validation
+Lombok
+
+Click Generate.
+
+STEP 3: Open in IntelliJ
+
+Extract ZIP
+Open IntelliJ
+Open project folder
+Wait for Maven dependencies to download
+
+NOTE : instead of STEP 1 to 3 if want to manually setup the project use below steps:
+
+STEP 1: Open IntelliJ IDEA
+
+Click New Project
+Select Maven
+Choose:
+JDK: Java 21
+GroupId: com.furqan
+ArtifactId: bookapi
+
+Click Create
+
+STEP 2: Project Structure
+
+Your base structure:
+
+bookapi/
+ ┣ src/
+ ┃ ┣ main/
+ ┃ ┃ ┣ java/
+ ┃ ┃ ┃ ┗ com/furqan/bookapi/
+ ┃ ┃ ┗ resources/
+ ┃ ┗ test/
+ ┣ pom.xml
+
+STEP 3: Replace pom.xml
+
+Use this full configuration:
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.furqan</groupId>
+    <artifactId>bookapi</artifactId>
+    <version>1.0.0</version>
+    <name>bookapi</name>
+    <description>Book Management REST API</description>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.0</version>
+        <relativePath/>
+    </parent>
+
+    <properties>
+        <java.version>21</java.version>
+    </properties>
+
+    <dependencies>
+
+        <!-- Spring Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Spring Data JPA -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- H2 Database -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Validation -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
+
+STEP 4: Reload Maven
+
+Right-click pom.xml
+Click Reload Maven Project
+
+OR:
+
+mvn clean install
