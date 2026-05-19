@@ -3,7 +3,6 @@ package com.furqan.bookapi.controller;
 import com.furqan.Dto.BookRequestDto;
 import com.furqan.Dto.BookResponseDto;
 import com.furqan.bookapi.service.BookService;
-import com.furqan.entity.Book;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,11 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/api/books")
 public class BookController {
-
 
     private final BookService service;
 
@@ -36,6 +33,7 @@ public class BookController {
     @PostMapping
     public ResponseEntity<BookResponseDto> addBook(
             @Valid @RequestBody BookRequestDto requestDto) {
+
         return new ResponseEntity<>(
                 service.addBook(requestDto),
                 HttpStatus.CREATED
@@ -46,6 +44,7 @@ public class BookController {
     public ResponseEntity<BookResponseDto> updateBook(
             @PathVariable Long id,
             @Valid @RequestBody BookRequestDto requestDto) {
+
         return ResponseEntity.ok(
                 service.updateBook(id, requestDto)
         );
